@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../dist/css/style.css" />
+    <title>openWeather | Get all your essential weather data</title>
+  </head>
+  <body>
+    <main class="container">
+      <section class="main-content">
+        <img src="../dist/img/logo_white_cropped.png" alt="Logo" class="logo" />
+        <div class="details">
+          <div class="location">
+            <h1 class="location-timezone">New York</h1>
+            <h2 id="location-time"></h2>
+          </div>
+          <div class="current">
+            <span class="current-temperature">16&deg;</span>
+            <img
+              class="current-icon"
+              src="../dist/img/02d@2x.png"
+              alt="weather icon"
+            />
+            <h4 class="current-desc"></h4>
+          </div>
+        </div>
+      </section>
+      <aside class="sidebar">
+        <form class="search">
+          <div class="search-group">
+            <input
+              id="search-field"
+              type="text"
+              class="search-field"
+              autocomplete="off"
+              placeholder="Another location..."
+            />
+            <button class="btn">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                class="search-icon"
+              >
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="2"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                />
+              </svg>
+            </button>
+          </div>
+        </form>
+        <div class="recentSearch">
+          <div class="recentSearch__panel">
+            <h2>Recent Search</h2>
+            <ul class="recentSearch__list">
+              <!-- <li>
+                <a class="recentSearch__link" href="#23456">
+                  <div class="recentSearch__data">
+                    <h4 class="recentSearch__name">Nairobi</h4>
+                  </div>
+                </a>
+              </li> -->
+              <li>New York</li>
+              <li>Manchester</li>
+              <li>California</li>
+              <li>Birmingham</li>
+            </ul>
+          </div>
+        </div>
+        <div class="weather-details">
+          <div class="weather-details__panel">
+            <h2>Weather Details</h2>
+            <ul class="weather-details__list">
+              <!-- <li>
+                <a class="recentSearch__link" href="#23456">
+                  <div class="recentSearch__data">
+                    <h4 class="recentSearch__name">Nairobi</h4>
+                  </div>
+                </a>
+              </li> -->
+              <li>Cloudiness</li>
+              <li>Humidity</li>
+              <li>Wind Speed</li>
+              <li>Average Visibility</li>
+            </ul>
+          </div>
+        </div>
+        <div class="next-days">
+          <div class="next-days__panel">
+            <h2>Next Days</h2>
+            <ul class="next-days__list">
+              <!-- <li>
+                <a class="recentSearch__link" href="#23456">
+                  <div class="recentSearch__data">
+                    <h4 class="recentSearch__name">Nairobi</h4>
+                  </div>
+                </a>
+              </li> -->
+              <li>Monday</li>
+              <li>Monday</li>
+              <li>Monday</li>
+              <li>Monday</li>
+              <li>Monday</li>
+              <li>Monday</li>
+              <li>Monday</li>
+              <li>Monday</li>
+              <li>Monday</li>
+              <li>Monday</li>
+              <li>Monday</li>
+            </ul>
+          </div>
+        </div>
+      </aside>
+    </main>
+    <script src="./js/index.js"></script>
+  </body>
+</html>
