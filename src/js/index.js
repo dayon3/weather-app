@@ -1,8 +1,10 @@
 // Global app controller
+require("dotenv").config();
 window.addEventListener("load", () => {
   const api = {
     key: "a94952c15772c2f368eea23448812a8b",
     base: "https://api.openweathermap.org/data/2.5/",
+    imgBase: "https://openweathermap.org/img/wn/",
   };
   let long;
   let lat;
@@ -10,15 +12,13 @@ window.addEventListener("load", () => {
   const searchBox = document.querySelector(".search-field");
   const button = document.querySelector(".btn");
   const locationTimezone = document.querySelector(".location-timezone");
-  const locationTime = document.getElementById("location-time");
+  const locationTime = document.querySelector(".location-time");
   const currentTemp = document.querySelector(".current-temperature");
   const currentDesc = document.querySelector(".current-desc");
   const currentIcon = document.querySelector(".current-icon");
+
   searchBox.addEventListener("keypress", setQuery);
-  button.addEventListener("click", (e) => {
-    e.preventDefault();
-    setQuery(e);
-  });
+  button.addEventListener("click", setQuery);
 
   setInterval(() => {
     myTimer();
@@ -37,23 +37,25 @@ window.addEventListener("load", () => {
       if (city) {
         getResults(city);
       }
-
+      // clear input field
       searchBox.value = "";
     }
   }
 
-  function getResults(query) {
-    fetch(`${api.base}weather?q=${query}&units=metric&appid=${api.key}`)
-      .then((weather) => {
-        return weather.json();
-      })
-      .then(displayResults);
+  async function getResults(query) {
+    const weather = await fetch(
+      `${api.base}weather?q=${query}&units=metric&appid=${api.key}`
+    );
+    const weatherData = await weather.json();
+    displayResults(weatherData);
   }
 
   function displayResults(weather) {
     locationTimezone.textContent = `${weather.name}, ${weather.sys.country}`;
-    currentTemp.innerHTML = `${weather.main.temp}<span>&deg;</span>`;
-    currentIcon.src = `https://openweathermap.org/img/wn/${weather.weather[0].icon}@2x.png`;
+    currentTemp.innerHTML = `${Math.round(
+      weather.main.temp
+    )}<span>&deg;</span>`;
+    currentIcon.src = `${api.imgBase}${weather.weather[0].icon}@2x.png`;
     currentDesc.textContent = `${weather.weather[0].description}`;
   }
 
@@ -80,11 +82,12 @@ window.addEventListener("load", () => {
           } = data.current;
           // Set DOM Elements from the API
           locationTimezone.textContent = data.timezone;
-          currentTemp.innerHTML = `${temp}<span>&deg;</span>`;
+          currentTemp.innerHTML = `${Math.round(temp)}<span>&deg;</span>`;
           currentDesc.textContent = weather[0].description;
         });
     });
   } else {
-    h1.textContent = "Geolocation not supported! Upgrade your browser!";
+    locationTimezone.textContent =
+      "Geolocation not supported! Upgrade your browser!";
   }
 });

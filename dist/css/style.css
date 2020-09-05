@@ -1,0 +1,230 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+}
+@media only screen and (max-width: 68.75em) {
+  html {
+    font-size: 50%;
+  }
+}
+
+body {
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  color: #fff;
+  width: 100%;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+.container {
+  background-image: url("../img/background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: top center;
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 100vh;
+}
+
+.logo {
+  height: 5em;
+  display: block;
+}
+
+.main-content {
+  width: 60%;
+  max-height: 100vh;
+  padding: 3em 4em;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+}
+
+.details {
+  padding: 8vh 0;
+  width: initial;
+}
+
+.details h1 {
+  font-size: 8em;
+  line-height: initial;
+}
+
+.location {
+  width: initial;
+}
+
+h2.location-time {
+  font-size: 2em;
+}
+
+.current {
+  display: flex;
+  align-items: center;
+  margin-top: 4vh;
+}
+
+.current img {
+  width: 100px;
+  height: 100px;
+}
+
+.current-weather {
+  display: flex;
+  align-items: center;
+}
+
+.current-desc {
+  text-transform: capitalize;
+  font-size: 1.8em;
+}
+
+span.current-temperature {
+  font-size: 8em;
+  font-weight: 500;
+  margin-right: 0.1em;
+}
+
+.sidebar {
+  width: 40%;
+  background-color: rgba(255, 255, 255, 0.2);
+  backdrop-filter: saturate(180%) blur(1em);
+  padding: 3em 4em;
+  position: absolute;
+  right: 0;
+  height: 100vh;
+  overflow-y: scroll;
+}
+
+.sidebar ul {
+  list-style: none;
+}
+
+.sidebar ul:first-child li {
+  font-weight: 100;
+}
+
+.sidebar ul li {
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.4em;
+  font-weight: 300;
+  margin: 1em 0;
+}
+
+.sidebar ul li:last-child {
+  margin-bottom: 1.5em;
+}
+
+.search div.search-group {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  display: flex;
+  justify-content: space-between;
+}
+
+.search-field {
+  background: transparent;
+  border: none;
+  padding: 0.8em 2em;
+  width: 100%;
+}
+
+.search-field:focus {
+  outline: none;
+}
+
+.search .search-icon {
+  width: 2em;
+  height: 2em;
+}
+
+.btn {
+  background: #ea6e4b;
+  border: none;
+  padding: 1em;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sidebar h2 {
+  text-transform: capitalize;
+  font-size: 1.8em;
+  margin: 1.5em 0;
+}
+
+.weather-details,
+.next-days {
+  border-top: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+ul.weather-details__list li,
+ul.next-days__list li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+ul.next-days__list li img {
+  width: 30px;
+  height: 30px;
+}
+
+@media only screen and (max-width: 868px) {
+  .container {
+    flex-direction: column;
+  }
+  .main-content,
+  .sidebar {
+    width: 100%;
+  }
+
+  .main-content {
+    align-items: center;
+  }
+
+  .main-content img {
+    align-self: flex-start;
+  }
+
+  .sidebar {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+  }
+}
+
+@media only screen and (max-width: 575px) {
+  /* .main-content {
+    align-items: flex-start;
+  } */
+}
+@media only screen and (max-width: 375px) {
+  .main-content,
+  .sidebar {
+    padding-right: 2em;
+    padding-left: 2em;
+  }
+
+  .details h1 {
+    font-size: 6em;
+  }
+
+  .current {
+    margin-top: 1vh;
+  }
+}
