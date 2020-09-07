@@ -164,7 +164,7 @@ span.current-temperature {
 .sidebar ul li {
   display: flex;
   justify-content: space-between;
-  font-size: 1.4em;
+  font-size: 1.55em;
   font-weight: 300;
   margin: 1em 0;
 }
