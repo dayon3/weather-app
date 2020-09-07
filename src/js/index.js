@@ -1,6 +1,4 @@
 // Global app controller
-require("dotenv").config();
-
 const api = {
   key: "a94952c15772c2f368eea23448812a8b",
   base: "https://api.openweathermap.org/data/2.5/",

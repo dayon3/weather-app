@@ -11,9 +11,7 @@
   "keywords": [],
   "author": "Davis Gitonga",
   "license": "MIT",
-  "dependencies": {
-    "dotenv": "^8.2.0"
-  },
+  "dependencies": {},
   "devDependencies": {
     "@babel/core": "^7.11.6",
     "@babel/polyfill": "^7.11.5",
