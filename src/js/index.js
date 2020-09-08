@@ -101,7 +101,10 @@ function displayMyLocation(weatherData) {
     weather,
   } = weatherData.current;
   // Set DOM Elements from the API
-  locationTimezone.textContent = weatherData.timezone;
+  locationTimezone.textContent = weatherData.timezone
+    .split("/")
+    .reverse()
+    .join(", ");
   currentTemp.innerHTML = `${Math.round(temp)}<span>&deg;</span>`;
   currentIcon.src = `${api.imgBase}${weather[0].icon}@2x.png`;
   currentDesc.textContent = weather[0].description;
@@ -112,7 +115,6 @@ function displayMyLocation(weatherData) {
 
   weatherData.daily.forEach((el) => {
     const icon = el.weather[0].icon;
-    const description = el.weather[0].description;
     const tempMin = Math.floor(el.temp.min);
     const tempMax = Math.floor(el.temp.max);
     const date = new Date(el.dt * 1000);
