@@ -7,22 +7,21 @@ const api = {
 let long;
 let lat;
 
-const searchBox = document.querySelector(".search-field");
-const button = document.querySelector(".btn");
-const callToAction = document.querySelector(".cta-btn");
-const locationTimezone = document.querySelector(".location-timezone");
-const locationTime = document.querySelector(".location-time");
-const currentTemp = document.querySelector(".current-temperature");
-const currentDesc = document.querySelector(".current-desc");
-const currentIcon = document.querySelector(".current-icon");
-const cloudinessNode = document.querySelector(".cloudiness");
-const humidityNode = document.querySelector(".humidity");
-const windSpeedNode = document.querySelector(".wind-speed");
-const visibilityNode = document.querySelector(".visibility");
-
-const details = document.querySelector(".details");
-const nextDaysList = document.querySelector(".next-days__list");
-const nextDaysPanel = document.querySelector(".next-days__panel");
+const searchBox = document.querySelector(".search-field"),
+  button = document.querySelector(".btn"),
+  callToAction = document.querySelector(".cta-btn"),
+  locationTimezone = document.querySelector(".location-timezone"),
+  locationTime = document.querySelector(".location-time"),
+  currentTemp = document.querySelector(".current-temperature"),
+  currentDesc = document.querySelector(".current-desc"),
+  currentIcon = document.querySelector(".current-icon"),
+  cloudinessNode = document.querySelector(".cloudiness"),
+  humidityNode = document.querySelector(".humidity"),
+  windSpeedNode = document.querySelector(".wind-speed"),
+  visibilityNode = document.querySelector(".visibility"),
+  details = document.querySelector(".details"),
+  nextDaysList = document.querySelector(".next-days__list"),
+  nextDaysPanel = document.querySelector(".next-days__panel");
 
 searchBox.addEventListener("keypress", setQuery);
 button.addEventListener("click", setQuery);
@@ -57,6 +56,7 @@ function setQuery(event) {
     const city = searchBox.value;
     if (city) {
       const url = `${api.base}weather?q=${city}&units=metric&appid=${api.key}`;
+      locationTimezone.textContent = "";
       renderLoader(details);
       getResults(url);
     }
