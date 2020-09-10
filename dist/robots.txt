@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+#Sitemap Reference
+Sitemap: https://openweather-pwa.web.app/sitemap.xml
+
+Host: https://openweather-pwa.web.app

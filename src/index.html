@@ -16,7 +16,7 @@
       content="Get all your essential weather data in one click"
     />
     <link
-      rel="preconnect stylesheet"
+      rel="dns-prefetch stylesheet"
       href="https://fonts.googleapis.com/css2?family=Nunito+Sans&display=swap"
     />
     <link rel="stylesheet" href="css/style.css" />
@@ -25,7 +25,12 @@
   <body>
     <main class="container">
       <section class="main-content">
-        <img src="img/logo_white_cropped.png" alt="Logo" class="logo" />
+        <img
+          src="img/logo_white_cropped.png"
+          alt="Logo"
+          class="logo"
+          height="50"
+        />
         <div class="details">
           <button class="cta-btn">Get current location data</button>
           <div class="location">
@@ -33,7 +38,7 @@
             <h2 class="location-time"></h2>
           </div>
           <div class="current">
-            <span class="current-temperature">17&deg;</span>
+            <span class="current-temperature">17&deg;C</span>
             <img class="current-icon" src="img/02d@2x.png" alt="weather icon" />
             <h3 class="current-desc"></h3>
           </div>
@@ -68,12 +73,12 @@
             </button>
           </div>
         </form>
-        <div class="recentSearch">
-          <div class="recentSearch__panel">
+        <div class="recent-search">
+          <div class="recent-search__panel">
             <h2>Recent Search</h2>
-            <ul class="recentSearch__list">
-              <li>New York</li>
-              <li>Manchester</li>
+            <ul class="recent-search__list">
+              <!-- <li><p>New York</p></li>
+              <li><p>Manchester</p></li> -->
             </ul>
           </div>
         </div>
@@ -82,15 +87,20 @@
             <h2>Weather Details</h2>
             <ul class="weather-details__list">
               <li>
-                <span>Cloudiness</span><span class="cloudiness">NaN</span>
-              </li>
-              <li><span>Humidity</span><span class="humidity">NaN</span></li>
-              <li>
-                <span>Wind Speed</span><span class="wind-speed">NaN</span>
+                <p>Cloudiness</p>
+                <span class="cloudiness">-</span>
               </li>
               <li>
-                <span>Average Visibility</span
-                ><span class="visibility">NaN</span>
+                <p>Humidity</p>
+                <span class="humidity">-</span>
+              </li>
+              <li>
+                <p>Wind Speed</p>
+                <span class="wind-speed">-</span>
+              </li>
+              <li>
+                <p>Average Visibility</p>
+                <span class="visibility">-</span>
               </li>
             </ul>
           </div>
@@ -111,10 +121,14 @@
 
     <!-- The core Firebase JS SDK is always required and must be listed first -->
     <script defer src="/__/firebase/7.19.1/firebase-app.js"></script>
-    <!-- TODO: Add SDKs for Firebase products that you want to use
-    https://firebase.google.com/docs/web/setup#available-libraries -->
-    <script defer src="/__/firebase/7.19.1/firebase-analytics.js"></script>
     <!-- Initialize Firebase -->
     <script defer src="/__/firebase/init.js"></script>
+    <script type="module">
+      // This is the service worker with the Advanced caching
+      import "https://cdn.jsdelivr.net/npm/@pwabuilder/pwaupdate@0.2.0/dist/pwa-update.min.js";
+
+      const el = document.createElement("pwa-update");
+      document.body.appendChild(el);
+    </script>
   </body>
 </html>

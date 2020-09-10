@@ -83,7 +83,6 @@ body {
 }
 
 .logo {
-  height: 5em;
   display: block;
 }
 
@@ -205,9 +204,15 @@ span.current-temperature {
 }
 
 .sidebar h2 {
-  text-transform: capitalize;
+  text-transform: uppercase;
   font-size: 1.8em;
   margin: 1.5em 0;
+}
+
+ul .list-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .weather-details,
@@ -231,6 +236,21 @@ ul.next-days__list li img {
   width: 30px;
   height: 30px;
   margin-left: 0.5em;
+}
+
+.list-delete {
+  background: transparent;
+  border: none;
+  visibility: hidden;
+  opacity: 0;
+  transition: all 0.5s;
+}
+.list-delete:focus {
+  outline: none;
+}
+.list-item:hover .list-delete {
+  opacity: 1;
+  visibility: visible;
 }
 
 @media only screen and (max-width: 868px) {
@@ -258,9 +278,9 @@ ul.next-days__list li img {
 }
 
 @media only screen and (max-width: 575px) {
-  /* .main-content {
+  .main-content {
     align-items: flex-start;
-  } */
+  }
 }
 @media only screen and (max-width: 375px) {
   .main-content,
