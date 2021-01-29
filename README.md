@@ -1,10 +1,10 @@
 # weather-app
 
-This project was built as part of the [GADS 2020]('https://gads.andela.com/') program, Mobile Web Specialist practice project.
+This project was built as part of the [GADS 2020](https://gads.andela.com/) program, Mobile Web Specialist practice project.
 
 ## Deployed on
 
-- [Firebase]('https://firebase.google.com/')
+- [Firebase](https://firebase.google.com/)
 
 ### Screenshot
 
