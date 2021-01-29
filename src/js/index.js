@@ -4,8 +4,6 @@ const api = {
   base: "https://api.openweathermap.org/data/2.5/",
   imgBase: "https://openweathermap.org/img/wn/",
 };
-let long;
-let lat;
 
 const searchBox = document.querySelector(".search-field"),
   button = document.querySelector(".btn"),
@@ -46,15 +44,20 @@ function myTimer() {
 }
 
 function setQuery(event) {
+  let long;
+  let lat;
   if (event.srcElement.className === "cta-btn") {
+    // remove button
     callToAction.style.display = "none";
+    // render loading spinner
+    renderLoader(details);
+    // get current location
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition((position) => {
         long = position.coords.longitude;
         lat = position.coords.latitude;
 
         const apiUrl = `${api.base}onecall?lat=${lat}&lon=${long}&exclude=minutely,hourly&appid=${api.key}&units=metric`;
-        renderLoader(details);
         getMyLocation(apiUrl);
       });
     }
@@ -75,21 +78,36 @@ function setQuery(event) {
 }
 
 async function getMyLocation(url) {
-  const weather = await fetch(url);
-  const weatherData = await weather.json();
-  clearLoader();
-  displayMyLocation(weatherData);
+  try {
+    const weather = await fetch(url);
+    const weatherData = await weather.json();
+    clearLoader();
+    displayMyLocation(weatherData);
+  } catch (error) {
+    clearLoader();
+    console.log(error);
+  }
 }
 
 async function getResults(url, city) {
-  const weather = await fetch(url);
-  const weatherData = await weather.json();
-  let cityData = JSON.stringify(weatherData);
-  let cityName = city.charAt(0).toUpperCase() + city.slice(1);
-  localStorage.setItem(`${cityName}`, cityData);
-  clearLoader();
-  displayResults(weatherData);
-  recentSearch();
+  try {
+    const weather = await fetch(url);
+    const weatherData = await weather.json();
+    let cityData = JSON.stringify(weatherData);
+    let cityName = city.charAt(0).toUpperCase() + city.slice(1);
+    localStorage.setItem(`${cityName}`, cityData);
+    clearLoader();
+    displayResults(weatherData);
+    recentSearch();
+  } catch (error) {
+    if (error) {
+      clearLoader();
+      locationTimezone.textContent = `Check your internet connection!`;
+      currentTemp.innerHTML = "";
+      currentIcon.style.display = "none";
+    }
+    console.log(error);
+  }
 }
 
 function displayResults(weather) {
@@ -186,13 +204,6 @@ function recentSearch() {
     Object.keys(localStorage).forEach((city) => {
       recentSearchList.insertAdjacentHTML("afterbegin", listItem(city));
     });
-
-    document.querySelectorAll(".del_sr").forEach((element) => {
-      element.addEventListener("click", () => {
-        let city = event.target.getAttribute("for");
-        deleteCity(city).then(() => recentSearch());
-      });
-    });
   } else {
     recentSearchList.innerHTML =
       "<li><small>No recent search history</small></li>";
@@ -209,17 +220,12 @@ async function deleteCity(city) {
   localStorage.removeItem(`${city}`);
 }
 
-function displayLocalData(event) {
-  console.log(event);
-}
-
-// listItem.addEventListener("click", displayLocalData);
 recentSearchList.addEventListener("click", (event) => {
   const id = event.target.closest(".list-item").dataset.itemid;
 
   if (event.target.matches(".list-delete, .list-delete *")) {
     // Delete from localstorage
-    localStorage.removeItem(`${id}`);
+    deleteCity(`${id}`);
 
     // Delete from UI
     deleteItem(id);

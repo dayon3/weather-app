@@ -97,7 +97,7 @@ body {
 }
 
 .details {
-  padding: 8vh 0;
+  padding: 20vh 0;
   width: initial;
 }
 
@@ -178,11 +178,20 @@ span.current-temperature {
   justify-content: space-between;
 }
 
+div > label {
+  font-weight: bold;
+  font-size: 1.95em;
+}
+
 .search-field {
   background: transparent;
   border: none;
   padding: 0.8em 2em;
   width: 100%;
+}
+
+.search-field::placeholder {
+  color: antiquewhite;
 }
 
 .search-field:focus {
