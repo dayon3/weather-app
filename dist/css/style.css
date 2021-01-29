@@ -31,19 +31,6 @@ body {
   --thumbBG: #90a4ae;
 }
 
-body::-webkit-scrollbar {
-  width: 11px;
-  height: 11px;
-}
-body::-webkit-scrollbar-track {
-  background: var(--scrollbarBG);
-}
-body::-webkit-scrollbar-thumb {
-  background-color: var(--thumbBG);
-  border-radius: 6px;
-  border: 3px solid var(--scrollbarBG);
-}
-
 .cta-btn {
   cursor: pointer;
   border-radius: 5em;
@@ -167,6 +154,19 @@ span.current-temperature {
   overflow-y: scroll;
 }
 
+.sidebar::-webkit-scrollbar {
+  width: 11px;
+  height: 11px;
+}
+.sidebar::-webkit-scrollbar-track {
+  background: var(--scrollbarBG);
+}
+.sidebar::-webkit-scrollbar-thumb {
+  background-color: var(--thumbBG);
+  border-radius: 6px;
+  border: 3px solid var(--scrollbarBG);
+}
+
 .sidebar ul {
   list-style: none;
 }
@@ -203,9 +203,6 @@ div > label {
   border: none;
   padding: 0.8em 2em;
   width: 100%;
-}
-
-.search-field::placeholder {
   color: antiquewhite;
 }
 
@@ -237,6 +234,54 @@ ul .list-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted #ccc;
+  color: #006080;
+  cursor: pointer;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  position: absolute;
+  width: 70px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  padding: 5px 0;
+  border-radius: 6px;
+  z-index: 1;
+  opacity: 0;
+  transition: opacity 0.6s;
+}
+
+.tooltip:hover .tooltiptext {
+  visibility: visible;
+  opacity: 1;
+}
+
+.tooltip-bottom {
+  top: 135%;
+  left: 50%;
+  margin-left: -60px;
+}
+
+.tooltip-bottom::after {
+  content: "";
+  position: absolute;
+  bottom: 100%;
+  left: 148%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent transparent #555 transparent;
+}
+
+.recent-search__list li {
+  cursor: pointer;
 }
 
 .weather-details,
