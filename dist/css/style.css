@@ -265,7 +265,7 @@ ul .list-item {
 
 .tooltip-bottom {
   top: 135%;
-  left: 50%;
+  left: 150%;
   margin-left: -60px;
 }
 
@@ -273,7 +273,7 @@ ul .list-item {
   content: "";
   position: absolute;
   bottom: 100%;
-  left: 148%;
+  left: 49%;
   margin-left: -5px;
   border-width: 5px;
   border-style: solid;
